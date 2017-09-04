@@ -1,10 +1,12 @@
 <?php
 namespace Omnipay\Mercanet\Message;
 
+use Omnipay\Common\Exception\InvalidResponseException;
+
 /**
  * Authorize Request
  */
-class OffsiteCompletePurchaseRequest extends OffsiteAbstractRequest
+class OffsiteCompletePurchaseRequest extends OffsiteCompleteAuthorizeRequest
 {
     public function sendData($data)
     {
@@ -13,10 +15,15 @@ class OffsiteCompletePurchaseRequest extends OffsiteAbstractRequest
 
     public function getData()
     {
-        if (strtolower($this->httpRequest->request->get('x_MD5_Hash')) !== $this->getHash()) {
-            throw new InvalidRequestException('Incorrect hash');
+        if (!$this->getSeal($this->data) === $this->seal) {
+            throw new InvalidResponseException('Reponse not signed correctly');
         }
-
-        return $this->httpRequest->request->all();
+        $parts = explode('|', $this->data);
+        $data = array();
+        foreach ($parts as $part) {
+            $subParts = explode('=', $part);
+            $data[$subParts[0]] = $subParts[1];
+        }
+        return $data;
     }
 }

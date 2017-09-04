@@ -7,6 +7,6 @@ namespace Omnipay\Mercanet\Message;
  * This is the action taken when an IPN, webhook or other callback comes in
  * from the payment gateway provider.
  */
-class OffsiteCompletePurchaseResponse extends OffsiteCompleteAuthorizeRequest
+class OffsiteCompletePurchaseResponse extends OffsiteCompleteAuthorizeResponse
 {
 }

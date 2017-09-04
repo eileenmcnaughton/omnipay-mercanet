@@ -139,3 +139,11 @@ Once you have registered with packagist and travis you should be able to get the
 The following gateways are provided by this package:
 
 * Mercanet_Offsite
+
+## Troubleshooting
+
+An incorrect currency will return an error like: 
+
+Technical problem  : code=03 message=None of the merchant's payment means is compliant with the transaction context
+
+ [c06920cdbc57be]

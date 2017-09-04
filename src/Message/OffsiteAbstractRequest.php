@@ -8,6 +8,35 @@ use Omnipay\Common\Exception\InvalidRequestException;
  */
 abstract class OffsiteAbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
+    protected $data;
+
+    /**
+     * @param mixed $data
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
+
+    protected $seal;
+
+    /**
+     * @param mixed $seal
+     */
+    public function setSeal($seal)
+    {
+        $this->seal = $seal;
+    }
+
+    protected $interfaceVersion;
+    /**
+     * @param mixed $interfaceVersion
+     */
+    public function setInterfaceVersion($interfaceVersion)
+    {
+        $this->interfaceVersion = $interfaceVersion;
+    }
+
     public function getData()
     {
         foreach ($this->getRequiredCoreFields() as $field) {
@@ -56,5 +85,10 @@ abstract class OffsiteAbstractRequest extends \Omnipay\Common\Message\AbstractRe
     public function setTransactionType($value)
     {
         return $this->setParameter('transactionType', $value);
+    }
+
+    public function getSeal($data)
+    {
+        return hash('sha256', $data . $this->getSecretKey());
     }
 }

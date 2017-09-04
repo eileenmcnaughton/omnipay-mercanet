@@ -1,7 +1,7 @@
 <?php
 namespace Omnipay\Mercanet\Message;
 
-use Omnipay\Mercanet\Message\AbstractRequest;
+use Guzzle\Http\ClientInterface;
 
 /**
  * Sample Complete Authorize Response
@@ -13,6 +13,7 @@ use Omnipay\Mercanet\Message\AbstractRequest;
  */
 class OffsiteCompleteAuthorizeRequest extends OffsiteAbstractRequest
 {
+
     public function sendData($data)
     {
         return $this->response = new OffsiteCompleteAuthorizeResponse($this, $data);
