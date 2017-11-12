@@ -32,6 +32,7 @@ class OffsiteGateway extends AbstractGateway
           'merchant_id' => '',
           'secret_key' => '',
           'testMode' => false,
+          'key_version' => 2,
         );
     }
 
@@ -103,5 +104,21 @@ class OffsiteGateway extends AbstractGateway
     public function setSecretKey($value)
     {
         return $this->setParameter('secret_key', $value);
+    }
+
+    /**
+     * @return int
+     */
+    public function getKeyVersion()
+    {
+        return $this->getParameter('key_version');
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setKeyVersion($value)
+    {
+        $this->setParameter('key_version', $value);
     }
 }
