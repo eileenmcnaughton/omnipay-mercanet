@@ -54,7 +54,6 @@ class OffsiteNotifyRequest extends OffsiteAbstractRequest implements Notificatio
      */
     public function getTransactionStatus()
     {
-
     }
 
     /**
@@ -64,7 +63,6 @@ class OffsiteNotifyRequest extends OffsiteAbstractRequest implements Notificatio
      */
     public function getTransactionReference()
     {
-
     }
 
     /**
