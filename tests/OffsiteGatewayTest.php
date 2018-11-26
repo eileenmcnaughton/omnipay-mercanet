@@ -30,7 +30,7 @@ class OffsiteGatewayTest extends GatewayTestCase
 
     public function testPurchase()
     {
-        $response = $this->gateway->purchase(array('testMode' => TRUE, 'amount' => '10.00', 'currency' => 978, 'card' => $this->card))->send();
+        $response = $this->gateway->purchase(array('testMode' => TRUE, 'amount' => '10.00', 'currency' => 'EUR', 'card' => $this->card))->send();
         $this->assertInstanceOf('Omnipay\Mercanet\Message\OffsiteAuthorizeResponse', $response);
         $this->assertFalse($response->isSuccessful());
         $this->assertTrue($response->isRedirect());
@@ -41,7 +41,7 @@ class OffsiteGatewayTest extends GatewayTestCase
 
     public function testAuthorize()
     {
-        $response = $this->gateway->authorize(array('amount' => '10.00', 'currency' => 978, 'card' => $this->card))->send();
+        $response = $this->gateway->authorize(array('amount' => '10.00', 'currency' => 'EUR', 'card' => $this->card))->send();
         $this->assertInstanceOf('Omnipay\Mercanet\Message\OffsiteAuthorizeResponse', $response);
         $this->assertFalse($response->isSuccessful());
         $this->assertTrue($response->isRedirect());
@@ -52,7 +52,7 @@ class OffsiteGatewayTest extends GatewayTestCase
 
     public function testCapture()
     {
-        $response = $this->gateway->capture(array('amount' => '10.00', 'currency' => 978, 'card' => $this->card, 'testMode' => true))->send();
+        $response = $this->gateway->capture(array('amount' => '10.00', 'currency' => 'EUR', 'card' => $this->card, 'testMode' => true))->send();
         $this->assertInstanceOf('Omnipay\Mercanet\Message\OffsiteAuthorizeResponse', $response);
         $this->assertFalse($response->isSuccessful());
         $this->assertTrue($response->isRedirect());
