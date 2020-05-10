@@ -5,7 +5,7 @@ namespace Omnipay\Mercanet\Message;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 use Omnipay\Common\Exception\InvalidResponseException;
 use Omnipay\Common\Message\NotificationInterface;
-use Guzzle\Http\ClientInterface;
+use Omnipay\Common\Http\ClientInterface;
 
 /**
  * Mercanet Notification.
